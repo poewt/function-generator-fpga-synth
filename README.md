@@ -1,6 +1,12 @@
 # Simple Verilog Function Generator
  Simple Verilog Function Generator for Audio Synthesizer
 
+## Running Python Script
+
+`
+    python3 run.py <module_name>
+`
+
 ## Sine Wave Generator (sine_gen.v)
 
 ```
