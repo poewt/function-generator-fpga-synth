@@ -109,4 +109,40 @@ endmodule
 ![alt text](GTKWaveSIneFix.png)
 **note that in GTKWave it currently displays sine_height as unsigned binary when it should in fact be signed binary. The current fix is to manually edit data format to **signed decimal**.*
 
+## Square Wave Generator
 
+Simply a square wave will switch between values 1 and -1 based on a preset time/width.
+
+![alt text](GTKSquareWave.png)
+
+**note that in GTKWave the top and bottom portions are not connected. Not sure if this is a GTKWave only thing, but I will have to test it out with a DAC eventually.*
+
+``` verilog
+// Verilog Code
+module square_wave(
+    input clk,
+    output reg signed [7:0] square_out
+);
+
+parameter INCREMENT = 1;
+parameter WIDTH = 10;
+parameter HEIGHT = 8'sd1;
+
+reg [7:0] counter = 0;
+reg flip = 0;
+
+always @(posedge clk) begin
+    if (counter >= WIDTH) begin
+        counter <= 0;
+        flip = ~flip;
+    end else begin
+        counter <= counter + INCREMENT;
+    end
+
+    square_out <= flip ? -HEIGHT : HEIGHT;
+end
+endmodule
+
+```
+
+This works by enabling a counter and incrementing each clock cycle. After reaching a certain time/width, the counter resets and the output is flipped.
