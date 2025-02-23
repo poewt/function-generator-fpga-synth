@@ -6,7 +6,7 @@ module sine_8_gen(
 
     // ==== 8 slices ====
     wire [3:0] n = 4'd8;
-    reg [7:0] computed_values [7:0];
+    reg signed [7:0] computed_values [7:0];
     initial begin
         computed_values[0] = 8'h00;
         computed_values[1] = 8'h5A;

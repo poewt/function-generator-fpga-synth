@@ -6,7 +6,7 @@ module sine_8_gen_tb();
     reg clk;
 
     // Test outputs
-    wire [7:0] sine_height;
+    wire signed [7:0] sine_height;
 
     sine_8_gen uut(
         clk,
